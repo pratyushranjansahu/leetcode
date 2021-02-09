@@ -3,7 +3,9 @@ package sixtyonetoseventy;
 public class ReomoveAllAdjecentRecursively {
 
 	public static void main(String[] args) {
-		String s="azxxzy";
+		//String s="azxxzy";
+
+		String s="aabc";
 		System.out.println(removeAdjecent(s));
 	}
 

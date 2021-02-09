@@ -3,24 +3,24 @@ package practices;
 public class ProductOfArrayExceptSelf {
 
 	public static void main(String[] args) {
-		int[] nums = { 1, 2, 3, 4 };
-		System.out.println(prod(nums));
-
+		int[] nums = { 4, 2, 3, 1 };
+		productExceptSelf(nums);
 	}
-	
-	private static int[] prod(int[] arr) {
-		int[] result=new int[arr.length];
+
+	private static int[] productExceptSelf(int[] nums) {
+		int[] result=new int[nums.length];
+		int product=1;
 		result[0]=1;
-		int leftProduct=1;
-		for(int i=0;i<arr.length;i++) {
-			result[i]=leftProduct;
-			leftProduct*=arr[i];
+		int n=nums.length;
+		for(int i=0;i<n;i++) {
+			result[i]=product;
+			product*=nums[i];
+			
 		}
-		
 		int rightProduct=1;
-		for(int i=arr.length-1;i>=0;i--) {
+		for(int i=n-1;i>=0;i--) {
 			result[i]*=rightProduct;
-			rightProduct*=arr[i];
+			rightProduct*=nums[i];
 		}
 		return result;
 	}

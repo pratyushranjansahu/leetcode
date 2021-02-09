@@ -8,7 +8,10 @@ public class PrisonInCell {
 
 	public static void main(String[] args) {
 		int[] cells={0,1,0,1,1,0,0,1};
-		System.out.println(prisonCell(cells, 7));
+		int[] arr1=prisonCell(cells, 7);
+		for(int m: arr1) 
+			System.out.print(m+" ");
+		
 	}
 	
 	private static int[] prisonCell(int[] cells,int N) {
@@ -30,9 +33,10 @@ public class PrisonInCell {
 					prev=current;
 					
 				}
+				cells[0]=0;
+				cells[7]=0;
 			}
-			cells[0]=0;
-			cells[7]=0;
+			
 		}
 		return cells;
 	}

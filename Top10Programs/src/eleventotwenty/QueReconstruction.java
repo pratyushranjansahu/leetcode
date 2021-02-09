@@ -7,7 +7,8 @@ import java.util.List;
 public class QueReconstruction {
 
 	public static void main(String[] args) {
-		int[][] people = new int[5][4];
+		//int[][] people = new int[5][4];
+		int[][] people = {{7,0},{4,4},{7,1},{5,0},{6,1},{5,2}};
 		reconstructQueue(people);
 
 	}

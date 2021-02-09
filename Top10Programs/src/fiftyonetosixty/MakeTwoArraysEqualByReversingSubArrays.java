@@ -6,7 +6,7 @@ import java.util.Map;
 public class MakeTwoArraysEqualByReversingSubArrays {
 
 	public static void main(String[] args) {
-		int[] target = {1,2,3,4}, arr = {2,4,1,3};
+		int[] target = {1,2,3,4,4}, arr = {2,4,1,3};
 		System.out.println(canBeEqual(target,arr));
 
 	}
@@ -20,8 +20,7 @@ public class MakeTwoArraysEqualByReversingSubArrays {
 			}else {
 				return false;
 			}
-		}
-		
+		}		
 		return true;
 	}
 }

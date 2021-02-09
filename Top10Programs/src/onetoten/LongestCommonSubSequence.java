@@ -7,7 +7,7 @@ public class LongestCommonSubSequence {
 		String text2 = "agbc";
 
 		System.out.println("Longest Common SubSequence is : " + getSubSequence(text1, text2));
-
+		
 	}
 
 	private static int getSubSequence(String text1, String text2) {
@@ -80,5 +80,7 @@ public class LongestCommonSubSequence {
 
 		return lcs[m][n];
 	}
+	
+
 
 }

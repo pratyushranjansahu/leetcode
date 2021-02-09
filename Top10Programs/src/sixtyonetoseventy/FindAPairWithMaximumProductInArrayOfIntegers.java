@@ -31,7 +31,9 @@ public class FindAPairWithMaximumProductInArrayOfIntegers {
 			}
 			
 		}
-		//System.out.println(nga +" : "+ngb+" : "+psa+" : "+psb);
+		System.out.println("*******************");
+		System.out.println(nga +" : "+ngb+" : "+psa+" : "+psb);
+		System.out.println("*******************");
 		int negProd=nga*ngb;
 		int posProd=psa*psb;
 		result=Math.max(negProd, posProd);

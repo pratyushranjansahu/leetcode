@@ -3,7 +3,7 @@ package sixtyonetoseventy;
 public class LongestCommonPrefix {
 
 	public static void main(String[] args) {
-		String[] arr= {"geeksforgeeks","geeks","geek","geezer"};
+		String[] arr= {"aeeksforgeeks","beeks","ceek","geezer"};
 		System.out.println(commonPrefix(arr, arr.length));
 
 	}

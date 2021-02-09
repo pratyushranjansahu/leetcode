@@ -3,9 +3,9 @@ package eleventotwenty;
 public class HammingDistance {
 
 	public static void main(String[] args) {
-		int x = 5;
-		int y = 2;
-		calculateDistance(x, y);
+		int x = 3;
+		int y = 1;
+		System.out.println(calculateDistance(x, y));
 
 	}
 
@@ -16,7 +16,7 @@ public class HammingDistance {
 			count += (res & 1);
 			res >>= 1;
 		}
-
+		
 		return count;
 	}
 

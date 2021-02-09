@@ -6,7 +6,7 @@ import java.util.List;
 public class PascalTriangleII {
 
 	public static void main(String[] args) {
-		int rowIndex=3;
+		int rowIndex=2;
 		System.out.println(getRow(rowIndex));
 
 	}

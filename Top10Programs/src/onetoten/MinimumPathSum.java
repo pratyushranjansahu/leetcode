@@ -10,13 +10,13 @@ public class MinimumPathSum {
 		int c=path[0].length;		
 		for (int i = 0; i < path.length; i++) {
 			for (int j = 0; j < path[0].length; j++) {
-				if(i-1>=0 && j-1>=0) {
+				if(i>0 && j>0) {
 					path[i][j]+=Math.min(path[i-1][j], path[i][j-1]);
 				}else {
-					if(i-1>=0) {
+					if(i>0) {
 						path[i][j]+=path[i-1][j];
 					}
-					if(j-1>=0) {
+					if(j>0) {
 						path[i][j]+=path[i][j-1];
 					}
 				}

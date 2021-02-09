@@ -15,9 +15,7 @@ public class ReverseBits {
 				res++;
 			n >>= 1;
 		}
-
 		return res;
-
 	}
 
 }

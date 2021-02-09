@@ -14,29 +14,32 @@ public class LongestPalindromicSubstring {
 	}
 
 	private static String palindrom(String s) {
-		for (int i = 0; i < n-1; i++) {
-			//for odd length
+		n = s.length();
+		if (s.length() <= 1)
+			return s;
+		for (int i = 0; i < n - 1; i++) {
+			// for odd length
 			getSubString(i, i, s);
-			//for even length
-			getSubString(i, i+1, s);
+			// for even length
+			getSubString(i, i + 1, s);
 		}
 		return s.substring(start, end + 1);
 	}
-	
-	private static void getSubString(int l,int r,String s) {
-		while(l>=0 && r<n) {
-			if(s.charAt(l)==s.charAt(r)) {
+
+	private static void getSubString(int l, int r, String s) {
+		while (l >= 0 && r < n) {
+			if (s.charAt(l) == s.charAt(r)) {
 				l--;
 				r++;
-			}else {
+			} else {
 				break;
 			}
 		}
-		int len=r-l-1;
-		if(len>max_len) {
-			max_len=len;
-			start=l+1;
-			end=r-1;
+		int len = r - l - 1;
+		if (len > max_len) {
+			max_len = len;
+			start = l + 1;
+			end = r - 1;
 		}
 	}
 }

@@ -3,7 +3,8 @@ package fortyonetofifty;
 public class DecodeWays {
 
 	public static void main(String[] args) {
-		String s="226";
+		//String s="226";
+		String s="12";
 		System.out.println(numDecodings(s));
 
 	}

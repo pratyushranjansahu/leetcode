@@ -7,22 +7,18 @@ public class UniquePath {
 
 	}
 	
-	private static int uniquePath(int m,int n) {
-		int[][] path=new int [m][n];
-		int r=path.length;
-		int c=path[0].length;
-		for (int i = r-2; i >=0; i--) 
-			path[i][c-1]=1;
-		for (int j = c-2; j >= 0; j--) 
-			path[r-1][j]=1;
-		
-		for (int i = r-2; i >=0; i--) {
-			for (int j = c-2; j >=0; j--) {
-				path[i][j]=path[i][j+1]+path[i+1][j];
-			}
-		}
-		
-		return path[0][0];
+	private static int uniquePath(int n,int m) {
+		 int[][] paths = new int[n][m];
+	        for(int c = 0; c < m; ++c)
+	            paths[n-1][c] = 1;
+	        for(int r = 0; r < n; ++r)
+	            paths[r][m-1] = 1;
+	        for(int r = n-2; r >= 0; --r){
+	            for(int c = m-2; c >= 0; --c){
+	                paths[r][c] = paths[r][c+1] + paths[r+1][c];
+	            }
+	        }
+	        return paths[0][0];
 	}
 
 }

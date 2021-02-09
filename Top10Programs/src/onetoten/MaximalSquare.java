@@ -4,10 +4,11 @@ public class MaximalSquare {
 
 	public static void main(String[] args) {
 		char[][] matrix = { { '0', '1', '1', '1' }, { '1', '1', '1', '1' }, { '0', '1', '1', '1' } };
-		System.out.println(maxSquare(matrix));
+		int targerSquare=2;
+		System.out.println(maxSquare(matrix,targerSquare));
 	}
 
-	private static int maxSquare(char[][] matrix) {
+	private static int maxSquare(char[][] matrix,int t) {
 		int maxSquare = 0;
 		int r = matrix.length;
 		int c = matrix[0].length;

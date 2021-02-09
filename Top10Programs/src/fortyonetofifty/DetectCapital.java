@@ -3,7 +3,7 @@ package fortyonetofifty;
 public class DetectCapital {
 
 	public static void main(String[] args) {
-		String s="abC";
+		String s="AA";
 		System.out.println(isValid(s));
 
 	}

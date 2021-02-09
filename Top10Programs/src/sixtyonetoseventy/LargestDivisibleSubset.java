@@ -7,7 +7,8 @@ import java.util.List;
 public class LargestDivisibleSubset {
 
 	public static void main(String[] args) {
-		int[] nums= {1,2,4,8};
+		int[] nums= {2,3,4,6,8,10,24};
+		//int[] nums= {2,3,7};
 		System.out.println(largestDivisibleSubset(nums));
 
 	}

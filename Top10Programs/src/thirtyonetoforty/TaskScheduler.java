@@ -11,7 +11,8 @@ import java.util.PriorityQueue;
 public class TaskScheduler {
 
 	public static void main(String[] args) {
-		char[] tasks = { 'A', 'A', 'A', 'B', 'B', 'B','C','D' };
+		//char[] tasks = { 'A', 'A', 'A', 'B', 'B', 'B','C','D' };
+		char[] tasks = { 'A', 'A', 'A', 'B', 'B', 'B' };
 		int k = 2;
 		System.out.println(leastInterval(tasks, k));
 
@@ -22,9 +23,7 @@ public class TaskScheduler {
 		Map<Character, Integer> counts = new HashMap();
 		for (char t : tasks)
 			counts.put(t, counts.getOrDefault(t, 0) + 1);
-		//Comparator<Integer> comp=Collections.reverseOrder();
 		PriorityQueue<Integer> pq = new PriorityQueue(counts.size(), Collections.reverseOrder());
-		//PriorityQueue<Integer> pq=new PriorityQueue((a,b)-> -counts.get(a).compareTo(counts.get(b)));
 		pq.addAll(counts.values());
 
 		while (!pq.isEmpty()) {
