@@ -19,6 +19,8 @@ public class ReverseStringIII {
 			l=r+1;
 			r=l;
 		}
+		System.out.println(sb);
+		sb=sb.deleteCharAt(sb.length()-1);
 		return sb.toString().trim();
 	}
 	

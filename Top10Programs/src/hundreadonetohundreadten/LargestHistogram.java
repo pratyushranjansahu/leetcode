@@ -1,7 +1,7 @@
 package hundreadonetohundreadten;
 
 import java.util.Stack;
-
+//https://www.youtube.com/watch?v=t8p5FS6flw8
 public class LargestHistogram {
 
 	public static void main(String[] args) {
@@ -9,50 +9,59 @@ public class LargestHistogram {
 		int[] arr = { 2, 1, 5, 6, 5, 3 };
 		// int[] arr= {5,6,7};
 		// int[] arr= {1,1};
-		System.out.println(getMaxArea(arr));
+		System.out.println(largestRectangleArea(arr));
 
 	}
 
-	static int getMaxArea(int[] heights) {
-		int maxArea = 0;
-		if (heights.length == 0)
-			return 0;
-		if (heights.length == 1)
-			return heights[0];
-		Stack<Integer> stack = new Stack<Integer>();
-		stack.add(0);
-		for (int i = 1; i < heights.length; i++) {
-			int current = heights[i];
-			if (current >= heights[stack.peek()]) {
-				stack.add(i);
-			} else {
-				while (!stack.isEmpty() && current < heights[stack.peek()]) {
-					int temp = heights[stack.pop()];
-					if (stack.isEmpty()) {
-						maxArea = Math.max(maxArea, temp * i);
-					} else {
-						maxArea = Math.max(maxArea, temp * (i - stack.peek() - 1));
-					}
-
-				}
-				stack.add(i);
-			}
-
-		}
-		if (!stack.isEmpty()) {
-			int i = heights.length;
-			while (!stack.isEmpty()) {
-				int temp = heights[stack.pop()];
-				if (stack.isEmpty()) {
-					maxArea = Math.max(maxArea, temp * i);
-				} else {
-					maxArea = Math.max(maxArea, temp * (i - stack.peek() - 1));
-				}
-
-			}
-		}
-
-		return maxArea;
-	}
+	public static int largestRectangleArea(int[] heights) {
+	    
+        
+	    int[] left = new int[heights.length]; 
+	    int[] right = new int[heights.length];
+	    int[] width = new int[heights.length];
+	    Stack<Integer> stack = new Stack();
+	        
+	        
+	       //width --- left
+	        for(int i=0;i<heights.length;i++){
+	            
+	            while(!stack.isEmpty() && heights[i]<=heights[stack.peek()]){
+	                stack.pop();
+	            }
+	            
+	            if(stack.isEmpty()){
+	                left[i] = -1;
+	            }else{
+	                left[i] = stack.peek();
+	            }
+	            
+	            stack.add(i);
+	        }
+	        stack.clear();
+	        //width --- right
+	        for(int i=heights.length-1;i>=0;i--){
+	            
+	            while(!stack.isEmpty() && heights[i]<=heights[stack.peek()]){
+	                stack.pop();
+	            }
+	            
+	            if(stack.isEmpty()){
+	                right[i] = heights.length;
+	            }else{
+	                right[i] = stack.peek();
+	            }
+	            
+	            stack.add(i);
+	        }
+	        
+	        int area = 0;
+	        
+	         for(int i=0;i<heights.length;i++){
+	            width[i] = right[i]-left[i]-1;
+	            area = Math.max(heights[i]* width[i] ,area);
+	         }
+	        
+	        return area;
+	    }
 
 }
