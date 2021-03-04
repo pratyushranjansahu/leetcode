@@ -12,7 +12,7 @@ public class LetterCombinationOfAPhone {
 
 	public static void main(String[] args) {
 		System.out.println(letterCombinations("23"));
-		System.out.println(letterCombinations1("23"));
+		//System.out.println(letterCombinations1("23"));
 
 	}
 	
@@ -30,6 +30,7 @@ public class LetterCombinationOfAPhone {
 	        deque.add("");   
 	        
 	        for(int i=0;i<digits.length();i++){//2   3      4
+	        	System.out.println(i+" "+(i+1));
 	            String d = digits.substring(i,i+1); //2   3
 	            String fromMap = map.get(d); //"abc"   "def"
 	            int n = deque.size();
