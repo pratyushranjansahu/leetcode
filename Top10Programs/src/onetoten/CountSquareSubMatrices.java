@@ -1,6 +1,6 @@
 package onetoten;
 
-public class CountSubMatrices {
+public class CountSquareSubMatrices {
 
 	public static void main(String[] args) {
 		int[][] matrix = { { 0, 1, 1, 1 }, { 1, 1, 1, 1 }, {0, 1, 1, 1 } };
@@ -22,13 +22,13 @@ public class CountSubMatrices {
 					if (matrix[i][j] == 1) {
 						count++;
 						sol[i][j] = 1;
-						maxSquare = Math.max(maxSquare, sol[i][j]);
+						//maxSquare = Math.max(maxSquare, sol[i][j]);
 					}
 				}else {
 					if (matrix[i][j] == 1) {
 						int minValue=Math.min(Math.min(sol[i-1][j], sol[i][j-1]), sol[i-1][j-1]);
 						sol[i][j] = minValue+1;
-						maxSquare = Math.max(maxSquare, sol[i][j]);
+						//maxSquare = Math.max(maxSquare, sol[i][j]);
 						count+=sol[i][j];
 					}
 				}
