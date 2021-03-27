@@ -6,7 +6,7 @@ import java.util.Map;
 public class LongestPalindrome {
 
 	public static void main(String[] args) {
-		String s="aabcc";
+		String s="abbcacc";
 		System.out.println(longestPalindrome1(s));
 
 	}
@@ -34,6 +34,7 @@ public class LongestPalindrome {
 	
 	private static String longestPalindrome1(String s) {
 		int result = 0;
+		char lastChar=' ';
 		Map<Character, Integer> counts = new HashMap<>();
 		for (char c : s.toCharArray())
 			counts.put(c, counts.getOrDefault(c, 0) + 1);
@@ -48,19 +49,14 @@ public class LongestPalindrome {
 				concat(sb, entry.getKey(), c);
 			}
 			else {
-			
-				c= c - 1;
-				if(c<1 && !oddFound) {
-					oddFound = true;
-					concat(sb, entry.getKey(), c);
-				}else {
-					concat(sb, entry.getKey(), c);	
-				}
-				
-				//result += c - 1;
+				lastChar=entry.getKey();
+				oddFound = true;
+				result += c - 1;
 			}
 		}
-	
+		if (oddFound)
+			sb.append(lastChar);
+		
 		return sb.toString();
 	}
 	

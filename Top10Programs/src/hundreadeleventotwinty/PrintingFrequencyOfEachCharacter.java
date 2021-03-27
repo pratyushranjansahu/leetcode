@@ -20,10 +20,10 @@ public class PrintingFrequencyOfEachCharacter {
 	                count++; 
 	            } 
 	            System.out.print(s.charAt(i) 
-	                             + "" + count + " "); 
+	                             + "" + count); 
 	        } 
 	  
-	        System.out.println(); 
+	        //System.out.println(); 
 	    } 
 
 }
