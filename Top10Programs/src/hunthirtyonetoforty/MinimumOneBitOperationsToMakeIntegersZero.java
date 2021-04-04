@@ -1,5 +1,5 @@
 package hunthirtyonetoforty;
-
+///https://leetcode.com/problems/minimum-one-bit-operations-to-make-integers-zero/discuss/877798/JavaC++Python-3-Solutions-with-Prove-O(1)-Space
 public class MinimumOneBitOperationsToMakeIntegersZero {
 
 	public static void main(String[] args) {
