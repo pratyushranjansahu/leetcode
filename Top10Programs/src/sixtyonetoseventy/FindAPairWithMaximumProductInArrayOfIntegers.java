@@ -5,7 +5,7 @@ public class FindAPairWithMaximumProductInArrayOfIntegers {
 	public static void main(String[] args) {
 		int[] arr= {6,5,3,-1,8,-12,9,-9};
 		System.out.println(findMAxProduct(arr));
-
+		
 	}
 	
 	private static int findMAxProduct(int[] arr) {
