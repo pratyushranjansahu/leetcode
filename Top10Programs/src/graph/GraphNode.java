@@ -67,6 +67,21 @@ public class GraphNode {
 		graph[6].add(new Edge(6, 5, 3));
 		graph[6].add(new Edge(6, 4, 8));
 
+		// drawTree And generate Comp
+		boolean[] visited = new boolean[vertices];
+		ArrayList<ArrayList<Integer>> comps = new ArrayList<ArrayList<Integer>>();
+		for (int v = 0; v < vertices; v++) {
+			if (visited[v] == false) {
+				ArrayList<Integer> comp = new ArrayList<Integer>();
+				drawTreeAndGenerateComp(graph, v, comp, visited);
+				comps.add(comp);
+			}
+		}
+		// for is Graph connected
+		if (comps.size() == 1) {
+			System.out.println("Graph is connected.");
+		}
+
 	}
 
 	private static boolean hasPath(ArrayList<Edge>[] graph, int src, int dest, boolean[] visited) {
@@ -149,6 +164,19 @@ public class GraphNode {
 
 			}
 		}
+	}
+
+	private static void drawTreeAndGenerateComp(ArrayList<Edge>[] graph, int src, ArrayList<Integer> comp,
+			boolean[] visited) {
+		visited[src] = true;
+		comp.add(src);
+		for (Edge edge : graph[src]) {
+			if (visited[edge.nbr] == false) {
+				drawTreeAndGenerateComp(graph, edge.nbr, comp, visited);
+
+			}
+		}
+
 	}
 
 }
