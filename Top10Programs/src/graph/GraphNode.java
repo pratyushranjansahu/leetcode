@@ -77,10 +77,31 @@ public class GraphNode {
 				comps.add(comp);
 			}
 		}
+		//for perfect friends
+		int pair=0;
+		for(int i=0;i<comps.size();i++) {
+			for(int j=0;j<comps.size();j++) {
+				int count=comps.get(i).size()*comps.get(j).size();
+				pair+=count;
+			}
+		}
+		System.out.println(pair);
+		
 		// for is Graph connected
 		if (comps.size() == 1) {
 			System.out.println("Graph is connected.");
 		}
+		//Number of island (drawTreeForComponent)
+		boolean[][] visited1=new boolean[5][5];
+		int count=0;
+		int[][] arr=new int[5][5];
+		for(int i=0;i<arr.length;i++) {
+			for(int j=0;j<arr[0].length;j++) {
+				drawTreeForComponent(arr, i, j, visited1);
+				count++;
+			}
+		}
+		
 
 	}
 
@@ -177,6 +198,17 @@ public class GraphNode {
 			}
 		}
 
+	}
+
+	private static void drawTreeForComponent(int[][] arr, int i, int j, boolean[][] visited) {
+		if (i < 0 || j < 0 || i >= arr.length || j >= arr[0].length || arr[i][j] == 1 || visited[i][j] == true) {
+			return;
+		}
+		visited[i][j] = true;
+		drawTreeForComponent(arr, i - 1, j, visited);
+		drawTreeForComponent(arr, i, j - 1, visited);
+		drawTreeForComponent(arr, i + 1, j, visited);
+		drawTreeForComponent(arr, i, j + 1, visited);
 	}
 
 }
