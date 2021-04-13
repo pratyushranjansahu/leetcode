@@ -1,6 +1,7 @@
 package graph;
 
 import java.util.ArrayList;
+import java.util.PriorityQueue;
 
 public class GraphNode {
 	static class Edge {
@@ -15,6 +16,23 @@ public class GraphNode {
 		@Override
 		public String toString() {
 			return "Edge [src=" + src + ", nbr=" + nbr + ", wt=" + wt + "]";
+		}
+
+	}
+
+	static class Pair implements Comparable<Pair> {
+		int wsf;
+		String psf;
+
+		Pair(int wsf, String psf) {
+			this.wsf = wsf;
+			this.psf = psf;
+		}
+
+		@Override
+		public int compareTo(Pair o) {
+			// TODO Auto-generated method stub
+			return this.wsf - o.wsf;
 		}
 
 	}
@@ -80,7 +98,57 @@ public class GraphNode {
 
 			}
 		}
+	}
 
+	static String spath = "";
+	static int spathwt = Integer.MAX_VALUE;
+	static String lpath = "";
+	static int lpathwt = Integer.MIN_VALUE;
+	static String cpath = "";
+	static int cpathwt = Integer.MAX_VALUE;
+	static String fpath = "";
+	static int fpathwt = Integer.MIN_VALUE;
+	static PriorityQueue<Pair> pq = new PriorityQueue();
+
+	private static void multiSolver(ArrayList<Edge>[] graph, int src, int dest, boolean[] visited, int criteria, int k,
+			String psf, int wsf) {
+		if (src == dest) {
+			if (wsf < spathwt) {
+				spathwt = wsf;
+				spath = psf;
+			}
+			if (wsf > lpathwt) {
+				lpathwt = wsf;
+				lpath = psf;
+			}
+			if (wsf > criteria && wsf < cpathwt) {
+				cpathwt = wsf;
+				cpath = psf;
+			}
+			if (wsf < criteria && wsf > fpathwt) {
+				fpathwt = wsf;
+				fpath = psf;
+			}
+
+			if (pq.size() < k) {
+				pq.add(new Pair(wsf, psf));
+			} else {
+				if (wsf > pq.peek().wsf) {
+					pq.remove();
+					pq.add(new Pair(wsf, psf));
+				}
+			}
+
+			System.out.println(psf);
+			return;
+		}
+		visited[src] = true;
+		for (Edge edge : graph[src]) {
+			if (visited[edge.nbr] == false) {
+				printAllPaths(graph, edge.nbr, dest, visited, psf + edge.nbr);
+
+			}
+		}
 	}
 
 }
