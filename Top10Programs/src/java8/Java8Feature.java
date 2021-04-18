@@ -2,6 +2,7 @@ package java8;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -55,7 +56,10 @@ public class Java8Feature {
 
 	public static void main(String[] args) {
 		//convertStreamToMap();
-		traverseStreamMultipleTimes();
+		//traverseStreamMultipleTimes();
+		List<Employee> empList=getEmpList();
+		sortEmployeeListByMultipleCondition(empList);
+		
 	}
 
 	private static void convertStreamToMap() {
@@ -94,5 +98,27 @@ public class Java8Feature {
 	        //third use
 	        long count = tokens.stream().count();
 	        System.out.println(count);
+	}
+	
+	private static List<Employee> getEmpList(){
+		List<Employee> listEmp=new ArrayList();
+		
+		listEmp = new ArrayList<>(
+				Arrays.asList(new Employee(1, "A", 100), new Employee(2, "B", 200), new Employee(3, "C", 300),
+						new Employee(4, "D", 400), new Employee(5, "RAM", 500), new Employee(6, "AAM", 500)));
+
+		
+		return listEmp;
+	}
+	//https://howtodoinjava.com/java/sort/sort-arraylist-objects-comparable-comparator/
+	private static void sortEmployeeListByMultipleCondition(List<Employee> employees) {
+		//Sort all employees by first name in reverse order
+		Comparator<Employee> comparator = Comparator.comparing(e -> e.getName());
+		employees.sort(comparator.reversed());
+		System.out.println("Reverse order : "+employees);
+		//Sorting on multiple fields; Group by.
+				Comparator<Employee> groupByComparator = Comparator.comparing(Employee::getAmount).thenComparing(Employee::getName);
+				employees.sort(groupByComparator);	
+				System.out.println(employees);
 	}
 }
