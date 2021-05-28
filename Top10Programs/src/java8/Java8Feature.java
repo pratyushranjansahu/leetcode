@@ -6,8 +6,10 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 class Employee {
 	private long id;
@@ -120,5 +122,37 @@ public class Java8Feature {
 				Comparator<Employee> groupByComparator = Comparator.comparing(Employee::getAmount).thenComparing(Employee::getName);
 				employees.sort(groupByComparator);	
 				System.out.println(employees);
+	}
+	//OSG
+	private void countElement() {
+		List<Character> list=new ArrayList<Character>();
+		list.add('A');
+		list.add('B');
+		list.add('C');
+		list.add('A');
+		list.add('Z');
+		list.add('Y');
+		Map<Character,Integer> m=list.stream().collect(Collectors.toMap(Function.identity(),null));
+		System.out.println(m);
+
+		
+	}
+	
+	private void findDuplicateElementInList() {
+		 Stream<Integer> stream
+         = Stream.of(5, 13, 4,
+                     21, 13, 27,
+                     2, 59, 59, 34);
+		 Set<Integer> idSet=stream
+                 .collect(
+                         Collectors.groupingBy(
+                        		 Function.identity(),
+                                 Collectors.counting()))
+
+                 .entrySet()
+                 .stream()
+                 .filter(m -> m.getValue() > 1)
+                 .map(Map.Entry::getKey)
+                 .collect(Collectors.toSet());
 	}
 }
