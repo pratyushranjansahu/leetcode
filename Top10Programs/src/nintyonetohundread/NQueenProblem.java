@@ -41,12 +41,6 @@ public class NQueenProblem {
 	            }
 	        }
 
-	        for (int i = row, j = col - 1; j >= 0; j--) {
-	            if (chess[i][j] == 1) {
-	                return false;
-	            }
-	        }
-
 	        return true;
 	    }
 	  
