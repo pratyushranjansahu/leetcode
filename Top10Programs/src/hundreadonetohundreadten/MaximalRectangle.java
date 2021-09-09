@@ -1,7 +1,7 @@
 package hundreadonetohundreadten;
 
 import java.util.Stack;
-
+//https://www.youtube.com/watch?v=Q39oYu4p9gY&t=468s
 public class MaximalRectangle {
 
 	public static void main(String[] args) {
