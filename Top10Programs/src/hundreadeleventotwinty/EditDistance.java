@@ -31,9 +31,9 @@ public class EditDistance {
 		if (s.charAt(0) == t.charAt(0))
 			return rec(s.substring(1), t.substring(1));
 		else {
-			int op1 = rec(s.substring(1), t.substring(1));
-			int op2 = rec(s, t.substring(1));
-			int op3 = rec(s.substring(1), t);
+			int op1 = rec(s.substring(1), t.substring(1));//Substituion
+			int op2 = rec(s, t.substring(1));//Insertion
+			int op3 = rec(s.substring(1), t);//Deletion
 
 			return 1 + Math.min(op1, Math.min(op2, op3));
 		}
