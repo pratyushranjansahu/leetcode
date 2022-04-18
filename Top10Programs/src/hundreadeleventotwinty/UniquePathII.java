@@ -7,7 +7,7 @@ public class UniquePathII {
 
 	}
 
-	private static int uniquePath(int[][] obstacleGrid) {
+	private static int uniquePath(int[][] obstacleGrid,int m,int n) {
 		 int[][] dp = new int[m][n];
         
         for(int i=0;i<dp[0].length;i++){
