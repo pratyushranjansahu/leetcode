@@ -9,7 +9,7 @@ package hundreadfiftytosixty;
 public class PartitionArrayIntoDisjointIntervalsWithONSP {
     public static void main(String[] args) {
         int[] arr = {1,1};
-        System.out.println(partitionDisjointLeetCode(arr));//1
+        System.out.println(partitionDisjointWithOoneSpace(arr));//1
     }
     public static int partitionDisjointLeetCode(int[] nums) {
         int n = nums.length;
@@ -51,5 +51,18 @@ public class PartitionArrayIntoDisjointIntervalsWithONSP {
         }
         return ans+1;
     }
-
+    private static int partitionDisjointWithOoneSpace(int[] nums) {
+        int leftMax = nums[0];
+        int greater = nums[0];
+        int ans = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] > greater) {
+                greater = nums[i];
+            }else if (nums[i] < leftMax) {
+                leftMax = greater;
+                ans = i;
+            }
+        }
+        return ans+1;
+    }
 }
