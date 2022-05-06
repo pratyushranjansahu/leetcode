@@ -16,20 +16,20 @@ public class TrappingRainWater {
 		int totalwater = 0;
 
 
-		for (int i = 0; i < n; i++) {
-			max = Math.max(max, height[i]);
+		for(int i=0;i<n;i++){
+			max = Math.max(max,height[i]);
 			leftMax[i] = max;
 		}
 
 		max = 0;
 
-		for (int i = 1; i < n - 1; i++) {
-			max = Math.max(max, height[i]);
+		for(int i=n-1;i>=0;i--){
+			max = Math.max(max,height[i]);
 			rightMax[i] = max;
 		}
 
-		for (int i = n - 1; i >= 0; i--) {
-			int water = Math.min(leftMax[i], rightMax[i]) - height[i];
+		for(int i=1;i<n-1;i++){
+			int water = Math.min(leftMax[i],rightMax[i])-height[i];
 			totalwater += water;
 		}
 		return totalwater;
