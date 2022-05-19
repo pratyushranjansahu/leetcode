@@ -2,7 +2,10 @@ package hunnintytotwohun;
 
 import java.util.HashMap;
 import java.util.Map;
-
+/*
+    https://leetcode.com/problems/lfu-cache/
+    https://www.youtube.com/watch?v=0PSB9y8ehbk&t=1006s
+ */
 public class LFUCache {
     final int capacity;
     int curSize;
