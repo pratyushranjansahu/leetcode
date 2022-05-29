@@ -108,20 +108,17 @@ public class LFUCache {
 
         /** add new node into head of list and increase list size by 1 **/
         public void addNode(DLLNode curNode) {
-            DLLNode nextNode = head.next;
-            curNode.next = nextNode;
-            curNode.prev = head;
+            curNode.next = head.next;
+            curNode.next.prev = curNode;
             head.next = curNode;
-            nextNode.prev = curNode;
+            curNode.prev = head;
             listSize++;
         }
 
         /** remove input node and decrease list size by 1**/
         public void removeNode(DLLNode curNode) {
-            DLLNode prevNode = curNode.prev;
-            DLLNode nextNode = curNode.next;
-            prevNode.next = nextNode;
-            nextNode.prev = prevNode;
+            curNode.prev.next = curNode.next;
+            curNode.next.prev = curNode.prev;
             listSize--;
         }
 
