@@ -4,7 +4,10 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
-
+/*
+    https://leetcode.com/problems/reorganize-string/
+    https://www.youtube.com/watch?v=D_jE64CJ5UE&t=933s
+ */
 public class ReorganizeString {
     public static void main(String[] args) {
         String s = "aab";
