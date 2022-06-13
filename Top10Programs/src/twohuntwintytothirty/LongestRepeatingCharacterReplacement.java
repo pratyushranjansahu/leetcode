@@ -19,7 +19,7 @@ public class LongestRepeatingCharacterReplacement {
             charCount[s.charAt(windowEnd) - 'A']++;
             int currentCharCount = charCount[s.charAt(windowEnd) - 'A'];
             maxCount = Math.max(maxCount, currentCharCount);
-            while (windowEnd - windowStart -maxCount + 1 > k) {
+            if (windowEnd - windowStart -maxCount + 1 > k) {
                 charCount[s.charAt(windowStart) - 'A']--;
                 windowStart++;
             }
