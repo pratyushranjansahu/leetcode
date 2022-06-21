@@ -4,26 +4,26 @@ import java.util.ArrayList;
 import java.util.List;
 /*
     https://leetcode.com/problems/subsets/
-    https://www.youtube.com/watch?v=1BbeOUkUOak&t=277s
+    https://www.youtube.com/watch?v=kYY9DotIKlo&t=6s
  */
 public class Subsets {
     public static void main(String[] args) {
-        int[] nums = {1,2,3};
+        int[] nums = {1, 2, 3};
         System.out.println(subsets(nums));//
     }
+
     public static List<List<Integer>> subsets(int[] nums) {
-        List<List<Integer>> result=new ArrayList<>();
-        result.add(new ArrayList<>());
+        List<List<Integer>> subset = new ArrayList();
+        dfs(subset, 0, nums, new ArrayList());
+        return subset;
+    }
 
-        for(int x : nums) {
-            int n=result.size();
-            for(int i=0;i<n;i++) {
-                List l=new ArrayList<>(result.get(i));
-                l.add(x);
-                result.add(l);
-            }
+    static void dfs(List<List<Integer>> subset, int index, int[] nums, List<Integer> current) {
+        subset.add(new ArrayList(current));
+        for (int i = index; i < nums.length; i++) {
+            current.add(nums[i]);
+            dfs(subset, i + 1, nums, current);
+            current.remove(current.size() - 1);
         }
-
-        return result;
     }
 }

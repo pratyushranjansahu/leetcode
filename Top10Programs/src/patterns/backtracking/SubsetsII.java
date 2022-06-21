@@ -5,8 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 
 /*
-    https://leetcode.com/problems/subsets/
-    https://www.youtube.com/watch?v=1BbeOUkUOak&t=277s
+    https://leetcode.com/problems/subsets-ii/
+    https://www.youtube.com/watch?v=Izkce7hta5U
  */
 public class SubsetsII {
     public static void main(String[] args) {
@@ -20,7 +20,7 @@ public class SubsetsII {
         return subset;
     }
 
-    static void dfs( List<List<Integer>> subset,int index,int[] nums,List<Integer> current){
+    static void  dfs( List<List<Integer>> subset,int index,int[] nums,List<Integer> current){
         subset.add(new ArrayList(current));
         for(int i=index;i<nums.length;i++){
             if(i>index && nums[i]==nums[i-1])continue;

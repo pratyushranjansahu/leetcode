@@ -1,24 +1,27 @@
 package patterns.backtracking;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 /*
-    https://leetcode.com/problems/permutations/
-    https://www.youtube.com/watch?v=ewww8VWF-rE&t=396s
+    https://leetcode.com/problems/permutations-ii/
+    https://www.youtube.com/watch?v=iCIrAwn2d1g&t=427s
  */
-public class Permutations {
+public class PermutationsII {
     public static void main(String[] args) {
-        int[] nums = {1,2,3};
+        int[] nums = {1,1,2};
         System.out.println(permute(nums));//[[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 2, 1], [3, 1, 2]]
     }
 
     public static List<List<Integer>> permute(int[] nums) {
-        List<List<Integer>> result = new ArrayList<>();
+        Set<List<Integer>> result = new HashSet();
         permute(nums, 0, result);
-        return result;
+        return new ArrayList<>(result);
     }
 
-    private static void permute(int[] nums, int index, List<List<Integer>> result) {
+    private static void permute(int[] nums, int index, Set<List<Integer>> result) {
         if (index == nums.length) {
             List<Integer> copyList = new ArrayList();
             for (int num : nums)
