@@ -9,27 +9,22 @@ public class MaximumXOROfTwoNumbersInAnArray {
         System.out.println(findMaximumXOR(nums));//28
     }
     static class Trie {
-        class Node {
-            Node left, right;
-        }
-        Node root;
-        Trie(){
-            root = new Node();
-        }
+         Trie left, right;
+
         public void insert (int val){
+            Trie curr = this;
             int bitIndex = 30;
-            Node curr = root;
             while (bitIndex >= 0) {
                 int mask = 1 << bitIndex;
                 int bit = (mask&val)  > 0 ? 1 : 0;
                 if (bit == 0) {
                     if (curr.left == null) {
-                        curr.left = new Node();
+                        curr.left = new Trie();
                     }
                     curr = curr.left;
                 } else {
                     if (curr.right == null) {
-                        curr.right = new Node();
+                        curr.right = new Trie();
                     }
                     curr = curr.right;
                 }
@@ -39,7 +34,7 @@ public class MaximumXOROfTwoNumbersInAnArray {
         public int query(int find) {
             int ans = 0;
             int bitIndex = 30;
-            Node curr = root;
+            Trie curr = this;
             while (bitIndex >= 0) {
                 int mask = 1 << bitIndex;
                 int bit = (mask&find)  > 0 ? 1 : 0;
