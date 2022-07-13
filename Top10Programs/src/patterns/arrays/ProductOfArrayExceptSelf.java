@@ -1,0 +1,31 @@
+package patterns.arrays;
+/*
+	https://leetcode.com/problems/product-of-array-except-self/submissions/
+	https://www.youtube.com/watch?v=6p7mfKopfLY&t=879s
+ */
+public class ProductOfArrayExceptSelf {
+
+	public static void main(String[] args) {
+		int[] nums = { 4, 2, 3, 1 };
+		productExceptSelf(nums);
+	}
+
+	private static int[] productExceptSelf(int[] nums) {
+		int[] result=new int[nums.length];
+		int product=1;
+		result[0]=1;
+		int n=nums.length;
+		for(int i=0;i<n;i++) {
+			result[i]=product;
+			product*=nums[i];
+			
+		}
+		int rightProduct=1;
+		for(int i=n-1;i>=0;i--) {
+			result[i]*=rightProduct;
+			rightProduct*=nums[i];
+		}
+		return result;
+	}
+
+}
