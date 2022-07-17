@@ -4,8 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 /*
     https://leetcode.com/problems/two-sum/
-    https://www.youtube.com/watch?v=VbVQJRKXxBA
-    https://www.youtube.com/watch?v=TXxwt1eFF98&t=18s
+    https://www.youtube.com/watch?v=TXxwt1eFF98
  */
 public class TwoSum {
     public static void main(String[] args) {
@@ -16,19 +15,24 @@ public class TwoSum {
         }
     }
     private static int[] twoSum(int[] nums,int target) {
-        int[] result=new int[2];
-        Map<Integer,Integer> map=new HashMap();
-        for(int i=0;i<nums.length;i++) {
-            int complement=target-nums[i];
-            if(map.containsKey(complement)) {
-                int i0=map.get(complement);
-                result[0]=i0;
-                result[1]=i;
-                return result;
-            }else{
-                map.put(nums[i], i);
+        HashMap<Integer,Integer> map  = new HashMap();
+
+        //Fill HM
+        for(int i=0;i<nums.length;i++){
+            map.put(nums[i],i);
+        }
+
+        //Searching
+        for(int i=0;i<nums.length;i++){ //2 7 11 15  target = 4
+            int num = nums[i];
+            int rem = target - num;
+            if(map.containsKey(rem)){
+                int index = map.get(rem);
+                if(index==i)continue;
+                return new int[]{i,index};
             }
         }
-        return result;
+
+        return new int[]{};
     }
 }
