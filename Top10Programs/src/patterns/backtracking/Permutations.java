@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 /*
     https://leetcode.com/problems/permutations/
+    https://www.youtube.com/watch?v=R3Sm9V2OSCo&t=503s
     https://www.youtube.com/watch?v=ewww8VWF-rE&t=396s
  */
 public class Permutations {
@@ -11,33 +12,27 @@ public class Permutations {
         int[] nums = {1,2,3};
         System.out.println(permute(nums));//[[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 2, 1], [3, 1, 2]]
     }
-
     public static List<List<Integer>> permute(int[] nums) {
-        List<List<Integer>> result = new ArrayList<>();
-        permute(nums, 0, result);
-        return result;
+        List<List<Integer>> res = new ArrayList<>();
+        boolean[] visited = new boolean[nums.length];
+        backtrack(res ,nums,new ArrayList(),visited);
+        return res;
     }
 
-    private static void permute(int[] nums, int index, List<List<Integer>> result) {
-        if (index == nums.length) {
-            List<Integer> copyList = new ArrayList();
-            for (int num : nums)
-                copyList.add(num);
-            result.add(copyList);
+    static void backtrack(List<List<Integer>> res,int[] nums,List<Integer> curr, boolean[] visited){
+        if(curr.size()==nums.length){
+            res.add(new ArrayList(curr));
             return;
         }
 
-        for (int i = index; i < nums.length; i++) {
-            swap(nums, i, index);
-            permute(nums, index + 1, result);
-            swap(nums, i, index); // backtrack
+        for(int i=0;i<nums.length;i++){
+            if(visited[i]==true)continue;
+            curr.add(nums[i]);
+            visited[i] = true;
+            backtrack(res,nums, curr,visited);
+            curr.remove(curr.size()-1);
+            visited[i] = false;
         }
-    }
-
-    private static void swap(int[] nums, int i, int j) {
-        int temp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = temp;
     }
 }
 
