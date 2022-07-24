@@ -15,10 +15,10 @@ public class ConcatenatedWords {
     static class Trie {
         Trie[] children = new Trie[26];
         String str;
+        boolean added;
     }
 
     static Trie root;
-    //static Set<String> ans = new HashSet();
     static ArrayList<String> ans = new ArrayList();
     public static void search1(Trie curr) {
         if (curr.str != null) {
@@ -32,9 +32,9 @@ public class ConcatenatedWords {
     }
     public static void search(Trie curr, Trie newWord){
         if (curr.str != null && newWord.str != null) {
-
-            ans.add(curr.str);
-            curr.str = null;
+            if (curr.added == false)
+                ans.add(curr.str);
+            curr.added = true;
         }
         if (newWord.str != null) {
             search(curr, root);
@@ -62,7 +62,6 @@ public class ConcatenatedWords {
             insert(root,word);
         }
         search1(root);
-        //List<String> res = new ArrayList<String>(ans);
         return ans;
     }
 
