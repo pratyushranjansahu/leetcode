@@ -24,18 +24,21 @@ public class FindMedianFromDataStream {
     }
 
     public double findMedian() {
-        System.out.println("Printing max heap : "+maxHeap);
-        System.out.println("Printing min heap : "+minHeap);
-        if(maxHeap.size() != minHeap.size()){
+        if(maxHeap.size()> minHeap.size()){
             return maxHeap.peek();
+        } else if(maxHeap.size()< minHeap.size()) {
+            return minHeap.peek();
         } else{
             // maxHeap == minHeap size
             return (maxHeap.peek()  + minHeap.peek())/2.0;
         }
     }
     private void balance(){
-        if (maxHeap.size() > minHeap.size()) {
-            minHeap.add(maxHeap.poll());
+        if(maxHeap.size() - minHeap.size() >1){
+            minHeap.offer(maxHeap.poll());
+        }
+        else if(minHeap.size() - maxHeap.size() >1){
+            maxHeap.offer(minHeap.poll());
         }
     }
     public static void main(String[] args) {
