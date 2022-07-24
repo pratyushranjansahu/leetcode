@@ -21,22 +21,14 @@ public class SortByFrequency {
 		Map<Character,Integer> counts=new HashMap<>();
 		for(char c : s.toCharArray())
 			counts.put(c, counts.getOrDefault(c, 0)+1);
-		
-		/*counts=counts.entrySet()
-		.stream()
-		.sorted(comparingByValue(Comparator.reverseOrder()))
-		.collect(toMap(Map.Entry<Character, Integer> :: getKey, Map.Entry<Character, Integer> :: getValue,(e1,e2)-> e1,LinkedHashMap :: new));*/
 
-		
 		for(Map.Entry<Character, Integer> entries : counts.entrySet()) {
 			for (int i = 0; i < entries.getValue(); i++) {
 				stringBuilder.append(entries.getKey());
 			}
 		}
-		
-		
-		return stringBuilder.toString();
 
+		return stringBuilder.toString();
 	}
 	private static String sortByFrequencyQueue(String s) {
 		StringBuilder res = new StringBuilder();
