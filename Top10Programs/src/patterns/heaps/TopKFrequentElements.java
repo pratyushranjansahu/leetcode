@@ -27,8 +27,7 @@ public class TopKFrequentElements {
 		for(int num : nums)
 			counts.put(num, counts.getOrDefault(num, 0)+1);
 		PriorityQueue<Integer> pq=new PriorityQueue((a,b)-> -counts.get(a).compareTo(counts.get(b)));
-		//PriorityQueue<Integer> pq = new PriorityQueue(counts.size(),Comparator.reverseOrder());
-		
+			
 		for(int key : counts.keySet())
 			pq.add(key);
 		for(int i=0;i<k;i++) {
