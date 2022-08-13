@@ -2,7 +2,7 @@ package patterns.linkedlist;
 
 /*
     https://leetcode.com/problems/odd-even-linked-list/
-    https://www.youtube.com/watch?v=1FJHhl22S7c
+    https://www.youtube.com/watch?v=C_LA6SOwVTM
  */
 public class OddEvenLinkedList {
     private static class ListNode {
@@ -30,22 +30,18 @@ public class OddEvenLinkedList {
         }
     }
     public static ListNode oddEvenList(ListNode head) {
-        if (head == null || head.next == null || head.next.next == null)
+        if (head == null)
             return head;
-        ListNode oddIt = head;
-        ListNode evenIt = head.next;
-        ListNode evenHead = evenIt;
-
-        while (oddIt.next != null && evenIt.next != null) {
-            ListNode oddNext = evenIt.next;
-            oddIt.next = oddNext;
-            oddIt = oddIt.next;
-            if (oddIt != null) {
-                evenIt.next = oddIt.next;
-                evenIt = evenIt.next;
-            }
+        ListNode odd = head;
+        ListNode even = head.next;
+        ListNode evenHead = even;
+        while (even != null && even.next != null){
+            odd.next = even.next;
+            odd = odd.next;
+            even.next = odd.next;
+            even = even.next;
         }
-        oddIt.next = evenHead;
+        odd.next = evenHead;
         return head;
     }
 }
