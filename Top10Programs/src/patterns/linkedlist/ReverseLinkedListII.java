@@ -1,7 +1,7 @@
 package patterns.linkedlist;
 /*
     https://leetcode.com/problems/reverse-linked-list-ii/
-    https://www.youtube.com/watch?v=5c-FdXNaGTQ
+    https://www.youtube.com/watch?v=GSJuwQzKSnI
  */
 public class ReverseLinkedListII {
     private static class ListNode {

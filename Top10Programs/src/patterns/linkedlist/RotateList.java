@@ -1,7 +1,7 @@
 package patterns.linkedlist;
 /*
     https://leetcode.com/problems/rotate-list/
-    https://www.youtube.com/watch?v=QxevnZTKvXc
+    https://www.youtube.com/watch?v=CttdbiOArGg
  */
 public class RotateList {
     private static class ListNode {
@@ -28,31 +28,39 @@ public class RotateList {
         }
     }
     public static ListNode rotateRight(ListNode head, int k) {
-        int len = 0;
-        ListNode tmp = head;
-        ListNode prev = tmp;
-        while (tmp != null) {
-            len += 1;
-            tmp = tmp.next;
-        }
-        if (k != 0 && len != 0) {
-            k = k % len;
-        }
-        if (k == 0 || len == 0) {
+        if(head == null)
+            return head;
+        int n = size(head);
+        int loop = k % n;
+        loop = n - loop;
+        if(n == 1 || loop == n){
             return head;
         }
-        k = len - k;
-        tmp = head;
-        for (int i = 1; i <= k; i++) {
-            prev = tmp;
+        int  j = 0;
+        ListNode tmp = head;
+        ListNode firstAdd = head;
+        while(tmp != null) {
+            j++;
+            if(j == loop) {
+                firstAdd = tmp.next;
+                tmp.next = null;
+                break;
+            }
             tmp = tmp.next;
         }
-        ListNode start = tmp;
-        while (tmp.next != null) {
+        tmp = firstAdd;
+        while(tmp.next != null) {
             tmp = tmp.next;
         }
         tmp.next = head;
-        prev.next = null;
-        return start;
+        return firstAdd;
+    }
+    private static int size(ListNode head) {
+        int n = 0;
+        while(head != null) {
+            n++;
+            head = head.next;
+        }
+        return n;
     }
 }

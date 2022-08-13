@@ -1,7 +1,7 @@
 package patterns.linkedlist;
 /*
     https://leetcode.com/problems/swap-nodes-in-pairs/
-    https://www.youtube.com/watch?v=2-fFzM4wtlI&list=PLEI-q7w3s9gQIB_urBmMV04f_NBelXJEP&index=17
+    https://www.youtube.com/watch?v=-xwX521Ija4
  */
 public class SwapNodesInPairs {
     private static class ListNode {
@@ -30,33 +30,17 @@ public class SwapNodesInPairs {
 
     }
     public static ListNode swapPairs(ListNode head) {
-        if(head == null ||head.next == null ){
-            return head;
+        ListNode tmp = new ListNode(0);
+        tmp.next = head;
+        ListNode curr = tmp;
+        while(curr.next != null && curr.next.next != null) {
+            ListNode firstNode = curr.next;
+            ListNode secondNode = curr.next.next;
+            firstNode.next = secondNode.next;
+            curr.next = secondNode;
+            curr.next.next = firstNode;
+            curr = curr.next.next;
         }
-        ListNode first = head;
-        ListNode second = head.next;
-
-        ListNode it = first;
-        ListNode previt = null;
-        ListNode newHead = null;
-        while(it!=null && it.next!=null){
-
-            first = it;
-            second = it.next;
-            if(previt!=null){
-                previt.next = second;
-            }
-            if(newHead == null){
-                newHead = second;
-            }
-            if(it.next!=null) {
-                it = it.next.next;
-            }
-            second.next = first;
-            first.next = it;
-            previt = first;
-
-        }
-        return newHead;
+        return tmp.next;
     }
 }
