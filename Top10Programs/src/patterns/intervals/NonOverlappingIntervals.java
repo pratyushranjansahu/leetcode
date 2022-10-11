@@ -3,7 +3,7 @@ package patterns.intervals;
 import java.util.Arrays;
 /*
 	https://leetcode.com/problems/non-overlapping-intervals/
-	https://www.youtube.com/watch?v=BTObFnHbD4U&t=814s
+	https://www.youtube.com/watch?v=evA9Z5p16bI&t=59s
  */
 public class NonOverlappingIntervals {
 
@@ -23,27 +23,18 @@ public class NonOverlappingIntervals {
 
 		while(right<n)  //Unless all intervals are compared
 		{
-			if(intervals[left][1] <= intervals[right][0])   //Non-overlapping case
-			{
+			if(intervals[right][0] < intervals[left][1]){
+				count++;
+				if (intervals[right][1] <= intervals[left][1]){
+					left = right;
+				}
+			}else {
 				left = right;
-				right+=1;
+
 			}
-			else if(intervals[left][1]<=intervals[right][1])    //Overlapping case-1 (Remove right interval)
-			{
-				count+=1;       //Delete right
-				right+=1;
-			}
-			else if(intervals[left][1]>intervals[right][1])     //Overlapping case-2 (Remove left interval)
-			{
-				count+=1;
-				left = right;
-				right+=1;
-			}
+			right++;
 		}
 
 		return count;
 	}
-	  
-
-
 }
