@@ -2,6 +2,7 @@ package hundreadtwintyonetothirty;
 
 import java.util.Arrays;
 import java.util.PriorityQueue;
+//https://stackoverflow.com/questions/40992062/reduce-array-by-adding-elements
 //Given an array, reduce the array to a single element with minimum cost. For reducing, remove two elements from the array, add those two numbers and keep the sum back in the array. The cost of each operation is the sum of the elements removed in that step.
 public class ReduceArrayByAddingElements {
 
