@@ -1,13 +1,17 @@
 package hundreadtwintyonetothirty;
-
+/*
+	https://www.interviewbit.com/problems/maximum-sum-square-submatrix/
+	https://www.youtube.com/watch?v=WxjYE4_agbo
+ */
 public class MaximumSumSquareSubMatrix {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		int[][] A = {{2,4,5},{1,3,6},{1,5,5}};
+		int B = 2;
+		System.out.println(solve(A,B));
 	}
 
-	public int solve(int[][] A, int B) {
+	public static int solve(int[][] A, int B) {
 
 		int row = A.length;
 		int col = A[0].length;
