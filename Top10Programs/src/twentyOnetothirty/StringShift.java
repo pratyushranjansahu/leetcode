@@ -2,13 +2,15 @@ package twentyOnetothirty;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/*
+	https://www.youtube.com/watch?v=7XiNDRJk9Pk
+ */
 public class StringShift {
 
 	public static void main(String[] args) {
 		//String s="";
 		//List<List<Integer>> list=new ArrayList<>();
-		String str="abcdefg";
+		/*String str="abcdefg";
 		List<List<Integer>> list=new ArrayList<>();
 		List<Integer> l1=new ArrayList<>();
 		l1.add(1);
@@ -31,37 +33,33 @@ public class StringShift {
 		l4.add(1);
 		l4.add(3);
 		list.add(l4);
-		System.out.println(shift(str,list));
+		System.out.println(shift(str,list));*/
 
+		/*String s1 = "abc";
+		int[][] l = {{0,1},{1,2}};
+		System.out.println(shift(s1,l));*/
+
+
+		String s1 = "abcdefg";
+		int[][] l = {{1,1},{1,1},{0,2},{1,3}};
+		System.out.println(shift(s1,l));
 	}
 	
-	private static String shift(String s,List<List<Integer>> list) {
-		int leftShift=0;
-		int rightShift=0;
-		for (int i = 0; i < list.size(); i++) {
-			if(list.get(i).get(0)==0)
-				leftShift+=list.get(i).get(1);
-			else {
-				rightShift+=list.get(i).get(1);
+	private static String shift(String s,int[][] shift) {
+		int n = s.length();
+		String tmp = "";
+		for (int i = 0; i < shift.length; i++) {
+			tmp = "";
+			if (shift[i][0] == 1){
+				tmp = tmp + s.substring(n - shift[i][1]);
+				tmp = tmp + s.substring(0,n - shift[i][1]);
+			}else {
+				tmp = tmp + s.substring(shift[i][1]);
+				tmp = tmp + s.substring(0,shift[i][1]);
 			}
+			s = tmp;
 		}
-		
-		System.out.println("Left Shift : "+leftShift+" Right Shift : "+rightShift);
-		if(rightShift>leftShift) {
-			int count=rightShift-leftShift;
-			int right=count%s.length();
-			String s1=s.substring(0,s.length()-right);
-			String s2=s.substring(s.length()-right);
-			return s2+s1;
-		}
-		if(leftShift>rightShift) {
-			int count=leftShift-rightShift;
-			int left=count%s.length();
-			String s1=s.substring(0,left);
-			String s2=s.substring(left);
-			return s2+s1;
-		}
-	return s;
+		return s;
 	}
 
 }
