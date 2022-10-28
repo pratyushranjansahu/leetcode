@@ -5,11 +5,12 @@ package hundreadfiftytosixty;
     https://www.youtube.com/watch?v=nU5UUAyRFH4
  */
 public class NextGreaterElementIIILeetCode {
+
     public static void main(String[] args) {
-        String s = "12";
         int n = 12;
-        System.out.println(nextGreaterElement(n)); //21
+        System.out.println(nextGreaterElement(n)); //632145
     }
+
     public static int nextGreaterElement(int n) {
         char[] arr = (n+"").toCharArray();
 
@@ -33,8 +34,7 @@ public class NextGreaterElementIIILeetCode {
         arr[k] = temp;
 
         // swapping at the point of deflection
-        //System.out.println("I value is : "+(i+1));
-        reverseChar(arr, i+1);
+        reverseChar(arr, i);
         Long no = Long.parseLong(new String(arr));
         if(no<=Integer.MAX_VALUE){
             return no.intValue();
@@ -45,7 +45,7 @@ public class NextGreaterElementIIILeetCode {
     }
 
     private static void reverseChar(char[] str, int i){
-        int start = i;
+        int start = i+1;
         int end =str.length-1;
         while(end>=start){
             char temp = str[start];
