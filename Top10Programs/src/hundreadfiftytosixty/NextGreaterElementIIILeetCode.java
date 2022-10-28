@@ -11,40 +11,31 @@ public class NextGreaterElementIIILeetCode {
         System.out.println(nextGreaterElement(n)); //21
     }
     public static int nextGreaterElement(int n) {
-        char[] str = (n+"").toCharArray();
+        char[] arr = (n+"").toCharArray();
 
-        int deflectionPoint = str.length-1;
+        int i = arr.length-2;
 
-        while(deflectionPoint>0){
-            if(str[deflectionPoint] > str[deflectionPoint-1]) {
-                break;
-            }
-            deflectionPoint--;
+        while (i >= 0 && arr[i] >= arr[i+1]) {
+            i--;
         }
-        if(deflectionPoint == 0){
+        if (i == -1) {
             return -1;
         }
 
-        int firstSwappingIndex = deflectionPoint -1;
-
-        int secondSwappingIndex = str.length -1;
-        while(secondSwappingIndex>=firstSwappingIndex){
-            if(str[firstSwappingIndex] < str[secondSwappingIndex]) {
-                break;
-            }
-            secondSwappingIndex--;
+        //find just greater than ith index element
+        int k = arr.length-1;
+        while (arr[i] >= arr[k]) {
+            k--;
         }
-
-        // swap
-
-        char temp = str[firstSwappingIndex];
-        str[firstSwappingIndex] = str[secondSwappingIndex];
-        str[secondSwappingIndex] = temp;
+        //swap from i & k
+        char temp = arr[i];
+        arr[i] = arr[k];
+        arr[k] = temp;
 
         // swapping at the point of deflection
-
-        reverseChar(str, deflectionPoint);
-        Long no = Long.parseLong(new String(str));
+        //System.out.println("I value is : "+(i+1));
+        reverseChar(arr, i+1);
+        Long no = Long.parseLong(new String(arr));
         if(no<=Integer.MAX_VALUE){
             return no.intValue();
         } else{
