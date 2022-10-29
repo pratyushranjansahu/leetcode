@@ -15,7 +15,10 @@ public class TreeComparison {
         System.out.println("isSymmetric Tree : "+isSymmetric(root));
         System.out.println("************************");
 
-        
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
+        System.out.println("isIsomorphic Tree : "+isIsomorphic(root.left,root.right));
+        System.out.println("************************");
     }
 
     public static boolean isSameTree(TreeNode p, TreeNode q) {
@@ -44,5 +47,20 @@ public class TreeComparison {
 
         if (node1.val != node2.val) return false;
         return isMirror(node1.left, node2.right) && isMirror(node1.right, node2.left);
+    }
+
+    public static boolean isIsomorphic(TreeNode root1, TreeNode root2)
+    {
+        if (root1 == null && root2 == null) return true;
+
+        if (root1 == null || root2 == null) return false;
+
+        if(root1.val == root2.val){
+            if ((isIsomorphic(root1.left,root2.left) && isIsomorphic(root1.right,root2.right)) ||
+                    (isIsomorphic(root1.left,root2.right) && isIsomorphic(root1.right,root2.left))) {
+                return true;
+            }
+        }
+        return false;
     }
 }
