@@ -1,3 +1,5 @@
+package hunthirtyonetoforty;
+
 //https://www.youtube.com/watch?v=v5l9zs6j86g
 public class MarsExploration {
 
