@@ -19,6 +19,8 @@ public class TreeComparison {
         root.right = new TreeNode(3);
         System.out.println("isIsomorphic Tree : "+isIsomorphic(root.left,root.right));
         System.out.println("************************");
+
+        System.out.println("isSub Tree : "+isSubtree(root,null));
     }
 
     public static boolean isSameTree(TreeNode p, TreeNode q) {
@@ -62,5 +64,15 @@ public class TreeComparison {
             }
         }
         return false;
+    }
+
+    public static boolean isSubtree(TreeNode root, TreeNode subRoot) {
+        if(subRoot == null)
+            return true;
+        if(root == null)
+            return false;
+        if(isSameTree(root,subRoot))
+            return true;
+        return isSubtree(root.left,subRoot) || isSubtree(root.right,subRoot);
     }
 }
