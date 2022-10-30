@@ -21,6 +21,12 @@ public class TreeComparison {
         System.out.println("************************");
 
         System.out.println("isSub Tree : "+isSubtree(root,null));
+
+        System.out.println("************************");
+        root = new TreeNode(3);
+        root.left = new TreeNode(1);
+        root.right = new TreeNode(2);
+        System.out.println("isSum Tree : "+isSumTree(root));
     }
 
     public static boolean isSameTree(TreeNode p, TreeNode q) {
@@ -74,5 +80,26 @@ public class TreeComparison {
         if(isSameTree(root,subRoot))
             return true;
         return isSubtree(root.left,subRoot) || isSubtree(root.right,subRoot);
+    }
+
+    static boolean isSumTree(TreeNode root)
+    {
+        if(root == null)
+            return true;
+        if(root.left == null && root.right == null)
+            return true;
+        int leftSum = add(root.left);
+        int rightSum = add(root.right);
+        if(root.val == (leftSum + rightSum))
+            if(isSumTree(root.left) && isSumTree(root.right))
+                return true;
+
+        return false;
+    }
+    static int add(TreeNode root){
+        if(root == null)
+            return 0;
+        int sum = root.val + add(root.left) + add(root.right);
+        return sum;
     }
 }
