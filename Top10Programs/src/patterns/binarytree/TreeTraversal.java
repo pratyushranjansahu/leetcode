@@ -127,14 +127,15 @@ public class TreeTraversal {
             int n = queue.size();
             List<Integer> subList = new ArrayList<>();
             for (int i = 0; i < n; i++) {
-                if (queue.peek().left != null) {
-                    queue.add(queue.peek().left);
+                TreeNode node = queue.poll();
+                subList.add(node.val);
+                if (node.left != null) {
+                    queue.add(node.left);
                 }
 
-                if (queue.peek().right != null) {
-                    queue.add(queue.peek().right);
+                if (node.right != null) {
+                    queue.add(node.right);
                 }
-                subList.add(queue.poll().val);
             }
             res.add(0,subList);
 
