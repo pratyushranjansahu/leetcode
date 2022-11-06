@@ -1,4 +1,4 @@
-package huneightytoninty;
+package practiceinorder.p_141;
 /*
  * https://leetcode.com/problems/number-of-laser-beams-in-a-bank/
  * https://www.youtube.com/watch?v=2I_yrv-t3Uo

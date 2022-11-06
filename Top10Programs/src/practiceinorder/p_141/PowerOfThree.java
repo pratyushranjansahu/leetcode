@@ -1,4 +1,4 @@
-package huneightytoninty;
+package practiceinorder.p_141;
 /*
  * https://leetcode.com/problems/power-of-three/
  * https://www.youtube.com/watch?v=UncqP2F4t_0&t=111s

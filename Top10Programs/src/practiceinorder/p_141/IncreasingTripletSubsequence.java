@@ -1,4 +1,4 @@
-package huneightytoninty;
+package practiceinorder.p_141;
 /*
  * https://leetcode.com/problems/increasing-triplet-subsequence/
  * https://www.youtube.com/watch?v=yEFlGWOVH8g

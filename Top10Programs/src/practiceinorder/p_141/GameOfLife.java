@@ -1,4 +1,4 @@
-package huneightytoninty;
+package practiceinorder.p_141;
 /*
  * https://leetcode.com/problems/game-of-life/
  * https://www.youtube.com/watch?v=x1kRrOdcOAg
