@@ -1,4 +1,4 @@
-package practiceinorder.onetoten;
+package practiceinorder.p_1;
 //https://www.geeksforgeeks.org/solve-crossword-puzzle/ (similarity Leetcode 2018)
 //https://www.youtube.com/watch?v=fUAZS-sdP2Q
 public class CheckIfWordCanBePlacedInCrossword {

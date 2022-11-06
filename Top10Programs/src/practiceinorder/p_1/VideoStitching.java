@@ -1,4 +1,4 @@
-package practiceinorder.onetoten;
+package practiceinorder.p_1;
 
 public class VideoStitching {
 

@@ -1,4 +1,4 @@
-package practiceinorder.onetoten;
+package practiceinorder.p_1;
 //https://www.youtube.com/watch?v=nO95uYKB-lo
 //Leetcode : 1094
 public class CarPooling {

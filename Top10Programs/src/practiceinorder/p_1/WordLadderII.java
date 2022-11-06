@@ -1,4 +1,4 @@
-package practiceinorder.onetoten;
+package practiceinorder.p_1;
 
 import java.util.*;
 //https://www.youtube.com/watch?v=Tlq4x5ln9Rg&t=933s
