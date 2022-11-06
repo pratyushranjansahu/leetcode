@@ -18,21 +18,20 @@ public class NonOverlappingIntervals {
 		Arrays.sort(intervals, (a, b)->(a[0] - b[0]));
 		int count = 0;      //Count of number of intervals to be removed
 		int n = intervals.length;   //No of intervals
-		int left = 0;   //left interval
-		int right = 1;  //right interval
+		int prev = 0;   //left interval
+		//int right = 1;  //right interval
 
-		while(right<n)  //Unless all intervals are compared
-		{
-			if(intervals[right][0] < intervals[left][1]){
+		for(int current = 1; current < n; current++){
+
+			if(intervals[current][0] < intervals[prev][1]){
 				count++;
-				if (intervals[right][1] <= intervals[left][1]){
-					left = right;
+				if(intervals[current][1] <= intervals[prev][1]){
+					prev = current;
 				}
-			}else {
-				left = right;
-
+			}else{
+				prev = current;
 			}
-			right++;
+
 		}
 
 		return count;
