@@ -1,4 +1,4 @@
-package hundreadtwintyonetothirty;
+package practiceinorder.eletotwe;
 
 //https://www.youtube.com/watch?v=W-UalzYVEiQ
 public class WoodCuttingMadeEasy {

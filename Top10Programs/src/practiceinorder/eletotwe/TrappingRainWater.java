@@ -1,4 +1,4 @@
-package hundreadonetohundreadten;
+package practiceinorder.eletotwe;
 //https://www.youtube.com/watch?v=gIZSOpW-SN0
 public class TrappingRainWater {
 
