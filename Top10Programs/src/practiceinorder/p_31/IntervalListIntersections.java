@@ -1,7 +1,8 @@
-package patterns.intervals;
+package practiceinorder.p_31;
 
 import java.util.ArrayList;
 import java.util.List;
+
 /*
     https://leetcode.com/problems/interval-list-intersections/
     https://www.youtube.com/watch?v=820ds34o-TI&t=45s

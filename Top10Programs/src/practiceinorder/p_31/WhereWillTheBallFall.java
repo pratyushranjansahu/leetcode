@@ -1,4 +1,4 @@
-package hunsixtytoseventy;
+package practiceinorder.p_31;
 /*
     https://leetcode.com/problems/where-will-the-ball-fall/
     https://www.youtube.com/watch?v=qCKXRsIItG8&list=PL-Jc9J83PIiE-TR27GB7V5TBLQRT5RnSl&index=55

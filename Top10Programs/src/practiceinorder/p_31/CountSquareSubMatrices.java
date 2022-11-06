@@ -1,4 +1,4 @@
-package onetoten;
+package practiceinorder.p_31;
 
 public class CountSquareSubMatrices {
 
