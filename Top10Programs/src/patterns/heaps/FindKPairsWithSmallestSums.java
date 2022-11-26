@@ -19,7 +19,8 @@ public class FindKPairsWithSmallestSums {
         List<List<Integer>> res = new ArrayList<>(k);
         if(nums1.length == 0 || nums2.length == 0 || k == 0) return res;
         PriorityQueue<int []> pq = new PriorityQueue<>((a, b) -> a[0] + a[1] - b[0] - b[1]);
-        for(int i = 0; i < nums1.length && i < k; i++) pq.offer(new int []{nums1[i], nums2[0], 0}); // end of nums1
+        for(int i = 0; i < nums1.length && i < k; i++)
+            pq.offer(new int []{nums1[i], nums2[0], 0}); // end of nums1
         while(k-- > 0 && !pq.isEmpty()){
             int [] cur = pq.poll();
             List<Integer> temp = new ArrayList<>();
