@@ -6,7 +6,7 @@ package hunsixtytoseventy;
 public class ConsecutiveNumbersSum {
     public static void main(String[] args) {
         int n = 15;
-        System.out.println(consecutiveNumbersSum(n)); //4
+        System.out.println(consecutiveNumbersSum1(n)); //4
     }
     private static int consecutiveNumbersSum(int n) {
         int count = 0;
@@ -17,5 +17,19 @@ public class ConsecutiveNumbersSum {
             }
         }
         return count;
+    }
+    public static int consecutiveNumbersSum1(int N) {
+        int totalCombinations=0;
+        int i=1;
+        while(N>0){
+            if(N%i==0){
+                totalCombinations++;
+            }
+            N-=i;
+            i++;
+
+        }
+
+        return totalCombinations;
     }
 }
