@@ -3,6 +3,7 @@ package hunnintytotwohun;
 import java.util.Random;
 /*
  * https://leetcode.com/problems/shuffle-an-array/
+ * https://www.youtube.com/watch?v=NhVMsP9ibuE
  * https://www.youtube.com/watch?v=NCpXQshJEk4
  */
 public class ShuffleAnArray {
