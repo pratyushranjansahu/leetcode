@@ -10,7 +10,7 @@ import java.util.Stack;
  */
 public class EmployeeFreeTime {
     public static void main(String[] args) {
-        int[][] intervals = {{1,3},{6,7},{2,4},{2,5},{9,12}};
+        int[][] intervals = {{1,3},{6,7},{2,4},{2,5},{9,12},{5,6}};
         System.out.println(merge(intervals));
     }
     public static  List<List<Integer>> merge(int[][] intervals) {
@@ -36,7 +36,7 @@ public class EmployeeFreeTime {
                 int[] merge = new int[]{startpoint1,endmax};
                 stack.add(merge);
             }else{
-                stack.add(poparray);
+                //stack.add(poparray);
                 stack.add(intervals[i]);
                 List<Integer> l = new ArrayList();
                 l.add(endpoint1);
