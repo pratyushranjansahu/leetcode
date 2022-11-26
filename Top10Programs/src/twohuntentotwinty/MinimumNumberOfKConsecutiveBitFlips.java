@@ -1,4 +1,8 @@
 package twohuntentotwinty;
+
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 /*
     https://leetcode.com/problems/minimum-number-of-k-consecutive-bit-flips/
     https://www.youtube.com/watch?v=fW37Xe2yMEE
@@ -6,9 +10,11 @@ package twohuntentotwinty;
  */
 public class MinimumNumberOfKConsecutiveBitFlips {
     public static void main(String[] args) {
-        int[] nums = {0,0,0,1,0,1,1,0};
-        int k = 3;
-        System.out.println(minKBitFlips(nums, k)); //3
+       // int[] nums = {0,0,0,1,0,1,1,0};
+        //int k = 3;
+        int[] nums = {0,1,0};
+        int k = 2;
+        System.out.println(minKBitFlips1(nums, k)); //3
     }
     public static int minKBitFlips(int[] A, int K) {
         int ans = 0;
@@ -27,5 +33,22 @@ public class MinimumNumberOfKConsecutiveBitFlips {
         }
 
         return ans;
+    }
+
+    public static int minKBitFlips1(int[] A, int K) {
+        int n = A.length, flipped = 0, res = 0;
+        int[] isFlipped = new int[n];
+        for (int i = 0; i < A.length; ++i) {
+            if (i >= K)
+                flipped ^= isFlipped[i - K];
+            if (flipped == A[i]) {
+                if (i + K > A.length)
+                    return -1;
+                isFlipped[i] = 1;
+                flipped ^= 1;
+                res++;
+            }
+        }
+        return res;
     }
 }
