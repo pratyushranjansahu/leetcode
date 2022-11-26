@@ -3,44 +3,52 @@ package patterns.heaps;
 import java.util.PriorityQueue;
 /*
     https://leetcode.com/problems/find-median-from-data-stream/
+    https://www.youtube.com/watch?v=YrnkNkPimZc
     https://www.youtube.com/watch?v=_T2JmeMncW0
  */
 public class FindMedianFromDataStream {
     private PriorityQueue<Integer> maxHeap = null;
     private PriorityQueue<Integer> minHeap = null;
+    private int totalNum = 0;
     public FindMedianFromDataStream() {
         maxHeap = new PriorityQueue<Integer>((a,b) -> (b-a));
         minHeap = new PriorityQueue<Integer>((a,b) -> (a-b));
     }
 
     public void addNum(int num) {
-        if(maxHeap.size() == 0 || maxHeap.peek()>=num){
-            maxHeap.offer(num);
-        } else {
-            minHeap.offer(num);
+        if(!minHeap.isEmpty()){
+            if(minHeap.peek() < num){
+                minHeap.add(num);
+            }else {
+                maxHeap.add(num);
+            }
+        }else {
+            maxHeap.add(num);
         }
+        totalNum++;
 
-        balance();
+        if(totalNum %2 == 0){
+            if (maxHeap.size() > minHeap.size()){
+                minHeap.add(maxHeap.poll());
+            }else if (minHeap.size() > maxHeap.size()){
+                maxHeap.add(minHeap.poll());
+            }
+        }else {
+            if (maxHeap.size() > minHeap.size()+1){
+                minHeap.add(maxHeap.poll());
+            }else if (minHeap.size() > maxHeap.size()){
+                maxHeap.add(minHeap.poll());
+            }
+        }
     }
 
     public double findMedian() {
-        if(maxHeap.size()> minHeap.size()){
-            return maxHeap.peek();
-        } else if(maxHeap.size()< minHeap.size()) {
-            return minHeap.peek();
-        } else{
-            // maxHeap == minHeap size
-            return (maxHeap.peek()  + minHeap.peek())/2.0;
+        if (totalNum % 2 == 0){
+            return (double)(minHeap.peek()+maxHeap.peek())/2;
         }
+        return (double)maxHeap.peek();
     }
-    private void balance(){
-        if(maxHeap.size() - minHeap.size() >1){
-            minHeap.offer(maxHeap.poll());
-        }
-        else if(minHeap.size() - maxHeap.size() >1){
-            maxHeap.offer(minHeap.poll());
-        }
-    }
+
     public static void main(String[] args) {
         FindMedianFromDataStream obj = new FindMedianFromDataStream();
         obj.addNum(2);
