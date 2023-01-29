@@ -1,27 +1,22 @@
 package practiceinorder.p_131;
 /*
  * https://leetcode.com/problems/house-robber/
- * https://www.youtube.com/watch?v=jzpsHKJy00c&t=309s
+ * https://www.youtube.com/watch?v=pchOMyPbp0I&t=145s
  */
 public class HouseRobber {
     public static void main(String[] args) {
         int[] nums = {1,2,3,1};
-        System.out.println(rob(nums));//4
+        Integer[] dp = new Integer[nums.length];
+        System.out.println(houseRobber(nums,dp,0));//4
     }
-    public static int rob(int[] nums) {
-        int n = nums.length;
-        if (n == 0) {
+    public static int houseRobber(int[] house,Integer[] dp, int currIdx) {
+        if(currIdx >= house.length)
             return 0;
-        }
-        if (n == 1) {
-            return nums[0];
-        }
-        int v1 = nums[0], v2 = Math.max(v1,  nums[1]);
-        for (int i = 2; i < n; i++) {
-            int tmp = v2;
-            v2 = Math.max(v2, v1 + nums[i]);
-            v1 = tmp;
-        }
-        return v2;
+        if(dp[currIdx] != null)
+            return dp[currIdx];
+
+        int stealCurrentHouse = house[currIdx] + houseRobber(house,dp,currIdx+2);
+        int skipCurrentHouse =  houseRobber(house,dp,currIdx+1);
+        return dp[currIdx] = Math.max(stealCurrentHouse,skipCurrentHouse);
     }
 }
