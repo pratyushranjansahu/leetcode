@@ -14,23 +14,26 @@ public class CarPooling {
 
 
     public static boolean carPooling(int[][] trips, int capacity) {
-        int lastDrawnLocation = -1;
+        int max = 0;
         for(int[] trip : trips){
-            lastDrawnLocation = Math.max(lastDrawnLocation,trip[2]);
+            max = Math.max(max,trip[2]);
         }
-        int[] highHay = new int[lastDrawnLocation+1];
-        for (int[] trip : trips){
-            highHay[trip[1]] += trip[0];
-            highHay[trip[2]] -= trip[0];
+        int[] highWay = new int[max+1];
+
+        for(int[] trip : trips){
+            highWay[trip[1]] += trip[0];
+            highWay[trip[2]] -= trip[0];
         }
 
-        for (int i = 1; i <= lastDrawnLocation; i++){
-            if(highHay[i-1]> capacity)
+        if(highWay[0] > capacity)
+            return false;
+        for(int i = 1; i< highWay.length;i++){
+            highWay[i] += highWay[i-1];
+            if(highWay[i] > capacity)
                 return false;
-            highHay[i] += highHay[i-1];
-            if(highHay[i] > capacity)
-                return false;
+
         }
+
         return true;
     }
 }
