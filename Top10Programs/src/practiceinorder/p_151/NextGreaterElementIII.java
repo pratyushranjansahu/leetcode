@@ -7,8 +7,8 @@ package practiceinorder.p_151;
 public class NextGreaterElementIII {
 
     public static void main(String[] args) {
-        int n = 12;
-        System.out.println(nextGreaterElement(n)); //632145
+        int n = 230241;
+        System.out.println(nextGreaterElement(n)); //230412
     }
 
     public static int nextGreaterElement(int n) {
