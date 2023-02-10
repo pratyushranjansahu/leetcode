@@ -5,7 +5,10 @@ package practiceinorder.p_21;
  */
 public class WiggleSortI {
     public static void main(String[] args) {
-
+        int[] arr = {3, 5, 2, 1, 6, 4};
+        wiggleSort(arr);
+        for (int a : arr)
+            System.out.print(a+" ");//3 5 1 6 2 4
     }
     private static void wiggleSort(int[] arr) {
         for (int i = 0; i < arr.length-1; i++) {
