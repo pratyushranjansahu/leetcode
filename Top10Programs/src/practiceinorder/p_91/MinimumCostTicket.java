@@ -1,5 +1,8 @@
 package practiceinorder.p_91;
-
+/*
+	https://leetcode.com/problems/minimum-cost-for-tickets/description/
+	https://www.youtube.com/watch?v=MWJ7lwy1HF4
+ */
 public class MinimumCostTicket {
 
 	public static void main(String[] args) {
@@ -9,20 +12,33 @@ public class MinimumCostTicket {
 	}
 
 	public static int mincostTickets(int[] days, int[] costs) {
-		int n = days.length;
-		int[] dp = new int[n + 1];
-		for (int i = 0; i < n; ++i)
-			dp[i] = 365 * costs[0];
+		int dp[] = new int[days.length];
+		int ans = rec(days, costs, 0, dp);
+		return ans;
+	}
+	private static int rec(int days[], int costs[], int i, int dp[]){
+		if(i >= days.length) return 0;
+		if(dp[i] > 0) return dp[i];
+		int op1 = costs[0] + rec(days, costs, i+1, dp);
 
-		for (int i = n - 1; i >= 0; --i) {
-			int d7 = i, d30 = i;
-			while (d7 < n && days[d7] < days[i] + 7)
-				++d7;
-			while (d30 < n && days[d30] < days[i] + 30)
-				++d30;
-			dp[i] = Math.min(costs[0] + dp[i + 1], Math.min(costs[1] + dp[d7], costs[2] + dp[d30]));
+		int k = i;
+		for(; k <days.length; k++){
+			if(days[k] >= days[i] + 7){
+				break;
+			}
 		}
-		return dp[0];
+		int op2 = costs[1] + rec(days, costs, k, dp);
+
+
+		for(; k <days.length; k++){
+			if(days[k] >= days[i] + 30){
+				break;
+			}
+		}
+		int op3 = costs[2] + rec(days, costs, k, dp);
+
+		dp[i] = Math.min(op1, Math.min(op2, op3));
+		return Math.min(op1, Math.min(op2, op3));
 	}
 
 }
