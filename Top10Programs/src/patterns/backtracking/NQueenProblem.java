@@ -25,7 +25,7 @@ public class NQueenProblem {
         	return;
         }
         for (int col = 0; col < chess.length; col++) {
-            if (chess[row][col] == 0 && isQueenSafe(chess, row, col) == true) {
+            if (isQueenSafe(chess, row, col) == true) {
                 chess[row][col] = 1;
                 printNQueens(chess, row + 1, res);
                 chess[row][col] = 0;
