@@ -1,5 +1,8 @@
 package practiceinorder.p_81;
-
+/*
+	https://leetcode.com/problems/reverse-bits/description/
+	https://www.youtube.com/watch?v=LJiMk8lPJNc&t=303s
+ */
 public class ReverseBits {
 
 	public static void main(String[] args) {
@@ -7,15 +10,15 @@ public class ReverseBits {
 		reverseBits(n);
 	}
 
-	private static int reverseBits(int n) {
-		int res = 0;
-		for (int i = 0; i < 32; i++) {
-			res <<= 1;
-			if ((n & 1) > 0)
-				res++;
-			n >>= 1;
+	public static int reverseBits(int n) {
+		int result = 0;
+		for (int i = 0; i < 32; i ++) {
+			int lsb = n & 1;
+			int reverseLsb = lsb << (31 - i);
+			result = result | reverseLsb;
+			n = n >> 1;
 		}
-		return res;
+		return result;
 	}
 
 }
