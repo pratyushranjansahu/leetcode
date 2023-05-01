@@ -1,40 +1,33 @@
 package hundreadeleventotwinty;
 
 import java.util.Stack;
-
+/*
+	https://practice.geeksforgeeks.org/problems/next-larger-element-1587115620/1?utm_source=gfg&utm_medium=article&utm_campaign=bottom_sticky_on_article
+ 	https://www.youtube.com/watch?v=rSf9vPtKcmI&t=616s
+ */
 public class NextGreaterElement {
 
 	public static void main(String[] args) {
 		//[1,13,14,5,7,12] -> 13 14 -1 7 12 -1
-		int[] arr= {1,13,14,5,7,12};
-		int[] ret=nextGreater(arr);
+		long[] arr= {1,13,14,5,7,12};
+		long[] ret=nextLargerElement(arr,arr.length);
 		for(int i=0;i<arr.length;i++) {
 			System.out.println(arr[i]+"  "+ret[i]);
 		}
 
 	}
-	
-	private static int[] nextGreater(int[] heights) {
-		int[] right=new int[heights.length];
-		Stack<Integer> stack=new Stack();
-		 
-	        //width --- right
-	        for(int i=heights.length-1;i>=0;i--){
-	            
-	            while(!stack.isEmpty() && heights[i]>=stack.peek()){
-	                stack.pop();
-	            }
-	            
-	            if(stack.isEmpty()){
-	                right[i] = -1;
-	            }else{
-	                right[i] = stack.peek();
-	            }
-	            
-	            stack.add(heights[i]);
-	        
-	        }
-	        return right;
+
+	public static long[] nextLargerElement(long[] arr, int n)
+	{
+		long[] res = new long[n];
+		Stack<Long> st = new Stack<Long>();
+		for(int i = n-1; i >= 0; i--){
+			while(!st.isEmpty() && arr[i] >= st.peek())
+				st.pop();
+			res[i] = st.isEmpty() ? -1 : st.peek();
+			st.add(arr[i]);
+		}
+		return res;
 	}
 
 }
