@@ -2,7 +2,11 @@ package practiceinorder.p_11;
 
 import java.util.HashMap;
 import java.util.Map;
-
+/*
+	https://leetcode.com/problems/subarray-sum-equals-k/submissions/
+	https://www.youtube.com/watch?v=MHocw0bP1rA
+	https://github.com/luckykumardev/leetcode-solution/blob/master/Subarray%20Sum%20Equals%20K.java
+ */
 public class SubarraySumEqualsK {
 
 	public static void main(String[] args) {
@@ -10,28 +14,23 @@ public class SubarraySumEqualsK {
 		//int k = 3;
 		int[] nums = { 3, 4, 7, 2, -3,1,4,2 };
 		int k = 7;
-		System.out.println(subarraySum(nums, k));
+		System.out.println(subarraySum(nums, k));//4
 	}
 
 	private static int subarraySum(int[] nums, int k) {
-		if (nums.length == 0)
-			return 0;
-		int count = 0;
-		int currentSum = 0;
-		//currentSum and Count
-		Map<Integer, Integer> map = new HashMap<>();
-		for (int i = 0; i < nums.length; i++) {
-			currentSum += nums[i];
-			if (currentSum == k)
-				count++;
-			if (map.containsKey(currentSum - k)) {
-				count += map.get(currentSum - k);
-			}
-			map.put(currentSum, map.getOrDefault(currentSum, 0) + 1);
+		int sum = 0, result = 0;
+		Map<Integer, Integer> preSum = new HashMap<>();
+		preSum.put(0, 1);
 
+		for (int i = 0; i < nums.length; i++) {
+			sum += nums[i];
+			if (preSum.containsKey(sum - k)) {
+				result += preSum.get(sum - k);
+			}
+			preSum.put(sum, preSum.getOrDefault(sum, 0) + 1);
 		}
 
-		return count;
+		return result;
 	}
 
 }
